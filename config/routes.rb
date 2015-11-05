@@ -3,6 +3,7 @@ Nuttyguy::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :customers
   resources :products, only: [:index, :show]
+  resources :cart, only: [:index, :create]
 
   root 'products#index'
 end

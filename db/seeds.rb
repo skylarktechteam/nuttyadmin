@@ -106,8 +106,14 @@ products = [
 ]
 
 products.each do |product|
+  if Product.find_by(sku: product[:attributes][:sku])
+     puts "#{product[:attributes][:title]} already exists, skipping"
+     next
+  end
   p = Product.new(product[:attributes])
+  fn = "public/img/product_images/#{product[:image]}"
+  p.image = File.new(fn) if File.exist? fn
   if p.save
     puts "Created #{p.title}"
   end
-endAdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+end

@@ -47,3 +47,12 @@ end
 #active admin
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise', '~> 3.5', '>= 3.5.2'
+
+# Use Paperclip for image attachments
+gem 'paperclip', "~> 3.0"
+
+# Use Friendly Id for SEO
+gem 'friendly_id', '~> 5.1.0'
+
+# Use redcarpet for fucking around parse shite
+gem 'redcarpet'
