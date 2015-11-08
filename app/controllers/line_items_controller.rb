@@ -4,8 +4,13 @@ class LineItemsController < ApplicationController
 		def create
 
 	product = Product.find(params[:product_id])
-	@cart.line_items.build(product: product, quantity: params[:quantity])
-	@cart.save
+	if line_item = @cart.line_items.find { |li| li.product_id == product.id }
+	line_item.quantity += params[:quantity].to_i
+	else
+	line_item =LineItem.new(cart: @cart, product: product, quantity: params[:quantity])
+end
+line_item.save
+
 	redirect_to '/cart', notice: "#{product.title} was added to your cart." and return
 end
 

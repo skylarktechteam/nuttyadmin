@@ -5,18 +5,8 @@ class CartController < ApplicationController
 def index
 	@title = "Your Cart"
 	
-
 end
 
-def create
-
-	product = Product.find(params[:product_id])
-	@cart.line_items.build(product: product, quantity: params[:quantity])
-	@cart.save
-	redirect_to '/cart', notice: "#{product.title} was added to your cart." and return
-	end
-
-#private method is only called internally ( apply only in this controller not to another) 
-
-
+#private method is only called internally (apply only in this controller not to another) 
+#this is ok for Q add
 end

@@ -40,9 +40,12 @@
 							<td><%= number_field_tag :quantity, line_item.quantity, min: 1, max: 100 %>
 
 							<span class="glyphicon glyphicon-refresh"></span>update
+
 							<%= link_to line_item_path(line_item), method: :delete do %>
-							<a href="#"><span class="glyphicon glyphicon-remove"></span>remove</a>
+
+							<span class="glyphicon glyphicon-remove"></span>remove
 							<% end %>
+
 							</td>
 							<td class="hidden-xs"><%= number_to_currency line_item.product.price %></td>
 							<td class="total-price"><%= number_to_currency line_item.product.price %></td>
