@@ -1,7 +1,10 @@
 class Product < ActiveRecord::Base
 	validates :title, :sku, :price, presence: true
 	validates :price, numericality: true
-	has_and_belongs_to_many :carts
+
+# establishes many through relations in a model table line_items
+	has_many :line_items
+	has_many :carts, through: :line_items
 
 
 	#gems

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105002603) do
+ActiveRecord::Schema.define(version: 20151108000737) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -54,14 +54,6 @@ ActiveRecord::Schema.define(version: 20151105002603) do
 
   add_index "carts", ["customer_id"], name: "index_carts_on_customer_id"
 
-  create_table "carts_products", force: true do |t|
-    t.integer "cart_id"
-    t.integer "product_id"
-  end
-
-  add_index "carts_products", ["cart_id"], name: "index_carts_products_on_cart_id"
-  add_index "carts_products", ["product_id"], name: "index_carts_products_on_product_id"
-
   create_table "customers", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -92,6 +84,17 @@ ActiveRecord::Schema.define(version: 20151105002603) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "line_items", force: true do |t|
+    t.integer  "quantity"
+    t.integer  "cart_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
+  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
 
   create_table "products", force: true do |t|
     t.string   "title"
