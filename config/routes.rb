@@ -5,6 +5,7 @@ Nuttyguy::Application.routes.draw do
   resources :products, only: [:index, :show]
   resources :cart, only: [:index]
   resources :line_items, only: [ :create, :update, :destroy ]
+  post 'cart/complete' => 'cart#complete'
 
 
   root 'products#index'

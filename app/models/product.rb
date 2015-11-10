@@ -4,8 +4,8 @@ class Product < ActiveRecord::Base
 
 # establishes many through relations in a model table line_items
 	has_many :line_items
-	has_many :carts, through: :line_items
-
+	has_many :carts, through: :line_items, source: :itemized, source_type: 'Cart'
+	has_many :orders, through: :line_items, source: :itemized, source_type: 'Order'
 
 	#gems
 

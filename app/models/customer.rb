@@ -5,4 +5,6 @@ class Customer < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :cart
+  has_many :orders
+  
 end

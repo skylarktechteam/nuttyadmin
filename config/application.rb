@@ -21,5 +21,6 @@ module Nuttyguy
     # config.i18n.default_locale = :de
     
     I18n.enforce_available_locales = true
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

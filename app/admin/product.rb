@@ -7,6 +7,8 @@ show do |product|
 	attributes_table do
 	row :title
 	row :sku
+	row 'Customers who want to buy this product' do products.carts.collect(&:email).join(", ")
+	end
 	row :price
 	row :description
 	row :specs
